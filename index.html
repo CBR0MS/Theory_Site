@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Critical Theory</title>
+  <!-- Script-> Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Cardo:400,400i,700|Work+Sans:400,700" rel="stylesheet">
+  <!-- Script-> jQuery CDN -->
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js" 
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" 
+  crossorigin="anonymous"></script>
+  <!-- Script-> jQuery UI CDN -->
+  <script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  crossorigin="anonymous"></script>
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- JS  -->
+  <script src="js/main.js"></script>
+  <!-- Script to lazyload images -->
+  <script src="js/lazysizes.min.js"></script>
+
+  <!-- Script to preload images -->
+  <script type="text/javascript">
+    // begin loading the images for the menu immediately  
+    var images = [];
+    function preload() {
+      for (var i = 0; i < arguments.length; i++) {
+        images[i] = new Image();
+        images[i].src = preload.arguments[i];
+      }
+    }
+    preload(
+      'assets/renaissance.JPG',
+      'assets/iconoclasm.jpg',
+      'assets/baroque.jpg',
+      'assets/neoclassicism.jpg',
+      'assets/romanticism.jpg',
+      'assets/orientalism.JPG',
+      'assets/realism.jpg') 
+    </script>
+  </head>
+
+  <body>
+    <!-- Script for hash handling -->
+    <script type="text/javascript">
+
+      var currentPath = [];
+      var entirePath = [];
+
+  // handle browser back and forward button
+  window.onhashchange = function (e) {
+    
+    console.log(currentPath);
+    console.log(entirePath);
+    var newHash = e.newURL.split("#")[1];
+
+    //if (newHash == entirePath[currentPath.length]) {
+    if (false) {
+      console.log("next");
+      setUpPage(newHash);
+      currentPath.push(newHash);
+    }
+    else {
+
+      var last = currentPath.pop();
+      var lastlast = currentPath.pop();
+      
+      if (newHash == lastlast){
+        console.log("back");
+        // if the page has already been visited, reload it
+        setUpPage(last);
+        currentPath.push(lastlast);
+      }
+      // otherwise push the new page onto the stack
+      else {
+
+        if (typeof lastlast != 'undefined'){
+          currentPath.push(lastlast);
+        }
+        if (typeof last != 'undefined') {
+          currentPath.push(last);
+        }
+        currentPath.push(newHash);
+      }
+    }
+    entirePath.push(newHash);
+  };
+</script>
+
+<div id="content-wrapper">
+
+  <div id="title">
+
+    <!-- Title and subtitle at start -->
+    <h1 class="sans-serif-type title-block">Critical Theory: Notes and Summaries</h1>
+    <p class="serif-type sub-block">A selection of concepts and theories in art and architecture, 1300-1900. This reference follows the course <i>Critical Theory I</i> at Carnegie Mellon University, fall 2017.</p>
+
+    <!-- Bouncing arrow down -->
+    <div class="arrow-down">
+      <a href="#" title="Enter">
+        <img id="arrow" src="assets/arrow_icon.png" />
+      </a>
+    </div> <!-- end #arrow-down -->
+
+  </div> <!-- end #title -->
+
+  <!-- Info button -->
+  <div id="info-button">
+    <a href="#" title="Site Information">
+      <img id="info" class="safe-link" src="assets/i_icon.png" />
+    </a>
+  </div> <!-- end #info-button -->
+
+  <!-- The lightbox revealed when clicking the info button -->
+  <div id="lightbox" class="lightbox-content">
+    <h2><span class="sans-serif-type about">About</span></h2>
+    <p class="serif-type about">This site is a repository for my notes from Critical Theory I, a course taught in the CFA at Carnegie Mellon University. I've organized the notes relatively chronologicaly and by topic, starting with the Renaissance all the way to the dawn of Modernism with Realism. The summaries include key terms, concepts, and artists, which can all be highlighted by clicking on the links at the top of each topic's page. Additionally, I've included images that are useful to know and relate to the core ideas in the notes. All works included on this site are open-source; you can find their sources by clicking on them.</p>
+    <p class="serif-type about">
+      See this site's <a class="concept" href="https://github.com/CBR0MS/Theory_Site">source code on Github</a>. See more of my work on <a class="concept" href="http://christianbroms.com">my website</a>.
+    </p> <p><br><br></p> <p class="sans-serif-type about" style="font-size: 12px;">Copyright &copy; 2018 Christian Broms</p>
+
+    <a href="#" title="Close">
+      <img id="close" class="safe-link" src="assets/x_icon.png">
+    </a></div>
+    <div id="fade" class="overlay"></div>
+
+    <!-- menu bar -->
+    <div id="bar">
+      
+      <!-- menu items -->
+      <div id="menu"> 
+        <p class="menu-contents"><a class="page-direct" id="#renaissance">Renaissance & Vision</a></p>
+        <p class="menu-contents"><a class="page-direct" id="#iconoclasm">Image & Iconoclasm</a></p>
+        <p class="menu-contents"><a class="page-direct" id="#baroque">Baroque</a></p>
+        <p class="menu-contents"><a class="page-direct" id="#neoclassicism">Neoclassicism</a></p>
+        <p class="menu-contents"><a class="page-direct" id="#romanticism">Romanticism</a></p>
+        <p class="menu-contents"><a class="page-direct" id="#historicism">Historicism & Orientalism</a></p>
+        <p class="menu-contents"><a class="page-direct" id="#realism">Realism</a></p>
+      </div> <!-- end #menu -->
+
+    </div> <!-- end #bar -->
+
+    <!-- images for menu items -->
+    <div id="menu-images">
+      <a><div id="#renaissance" class="menu-img-container lazyload #renaissance" style="background-image: url('assets/renaissance.JPG');"></div></a>
+      <a><div id="#iconoclasm" class="menu-img-container lazyload #iconoclasm" style="background-image: url('assets/iconoclasm.jpg');"></div></a>
+      <a><div id="#baroque" class="menu-img-container lazyload #baroque" style="background-image: url('assets/baroque.jpg');"></div></a>
+      <a><div id="#neoclassicism" class="menu-img-container lazyload #neoclassicism" style="background-image: url('assets/neoclassicism.jpg');"></div></a>
+      <a><div id="#romanticism" class="menu-img-container lazyload #romanticism" style="background-image: url('assets/romanticism.jpg');"></div></a>
+      <a><div id="#historicism" class="menu-img-container lazyload #historicism" style="background-image: url('assets/orientalism.JPG');"></div></a>
+      <a><div id="#realism" class="menu-img-container lazyload #realism" style="background-image: url('assets/realism.jpg');"></div></a>
+    </div> <!-- end #menu-images -->
+
+    <!-- back button for tablet and mobile -->
+    <div id="back-button">
+      <img id="arrow-back" src="assets/arrow_icon.png" />
+    </div> <!-- end #back-button -->
+
+    <!-- Entry on Renaissance -->
+    <div class="main-entry" id="renaissance">
+      <h1>A New Vision: The Renaissance </h1>
+      <h4>Concepts and Terms- <i><a class="concept" href="#human">Humanism</a></i>, <i><a class="concept" href="#perspective">Mathematical Perspective</a></i>, <i><a class="concept" href="#patrons">Patronism</a></i>, <i><a class="concept" href="#conversation">Sacra conversazione</a></i></h4>
+      <h4>Artists and Critics- <i><a class="concept" href="#giotto">Giotto</a></i>, <i><a class="concept" href="#Brunelleschi">Brunelleschi</a></i>, <i><a class="concept" href="#Masaccio">Masaccio</a></i>, <i><a class="concept" href="#Angelico">Fra Angelico</a></i>, <i><a class="concept" href="#Francesca">Piero della Francesca</a></i></h4>
+      <h4>Readings- <i><a class="concept" href="#eye">“The Eye… Like a God of Human Parts”</a></i></h4>
+
+      <h3>Introduction </h3>
+
+      <p>The period known as the Renaissance is often split into many sub-categories, often determined by a timeframe or by geographical location of the movement; the Early, Mid, Late, Northern Renaissance and many other distinctions are common. However, when considering the theory of the Renaissance, it is perhaps more important to observe it as a singular occurrence in history, and understand the changes in philosophy that made it distinct and unique. </p>
+
+      <h3>Humanism </h3>
+
+      <p><span id="human">Humanism was a newfound appreciation and study of antiquity which rejected the medieval approach to understanding the world and people’s place in it. It was a large cultural movement, spurred on by artists, architects, writers, and scholars during the Renaissance.</span> </p>
+
+      <figure>
+        <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Santa_Maria_Novella.jpg/1200px-Santa_Maria_Novella.jpg">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Santa_Maria_Novella.jpg/1200px-Santa_Maria_Novella.jpg"></a>
+          <figcaption>Alberti, <i>Santa Maria Novella</i>, 1470</figcaption>
+        </figure>
+
+        <p>The first influences of a Humanist perspective can be seen in 1300’s architecture. The soaring spires and windows of the Gothic cathedrals were replaced by squat, human scaled churches. The circle became an important part of their design, as its soft and welcoming shape made the churches more planted at a size that accommodated people particularly well. Design elements such as circular columns and semi-circular arches were adopted from Greek and Roman classical architecture and were incorporated into new churches. </p>
+        <figure>
+          <a href="https://i.pinimg.com/736x/3a/59/3f/3a593f343abb8fb8cd61131afffd5652--elevation-drawing-fresco.jpg">
+            <img src="https://i.pinimg.com/736x/3a/59/3f/3a593f343abb8fb8cd61131afffd5652--elevation-drawing-fresco.jpg">
+          </a>
+          <figcaption>Diagram of <i>Santa Maria Novella</i></figcaption>
+        </figure>
+
+        <h3>Vision </h3>
+
+        <p>Perhaps most central change that was produced by the Renaissance was a completely new understanding of sight and vision which stemmed from nature. Leone Battista Alberti, an author, artist, and scholar wrote:</p>
+
+        <blockquote>
+          <p>“The fundamental  principle will be that all steps of learning should be sought from Nature; the means of perfecting our art will be found in diligence, study, and application.”</p>
+        </blockquote>
+
+        <p> Nature provided artists with a new way to understand the world, beyond simply theological bounds. <span id="eye">Vision, and visual representation, became a highly valued manner of explanation. As such, images became equally important means of communicating ideas as literary sources, and as their value grew so too did that of artists.</span> </p>
+
+        <p><span id="perspective">The first product of the new observation of the world was mathematical perspective. <span id="Brunelleschi">The architect Brunelleschi is particularly well known for his early experiments into perspective, one of which, the <i>Experiment of the Mirror</i> (1413) is widely considered the most important. </span>In it, Brunelleschi mounted an extremely realistic painting of a building made using mathematical one point perspective on a handle, with a hole in the middle. The viewer then held a mirror up to the painting, faced the painting away from them, and looked through the hole to see the front of the painting. When removing the mirror, they would see no difference between the painting and the real building in front of them.</span> </p>
+
+        <figure>
+          <a href="https://maitaly.files.wordpress.com/2011/04/0328p_duomo6_b.jpg">
+            <img src="https://maitaly.files.wordpress.com/2011/04/0328p_duomo6_b.jpg">
+          </a>
+          <figcaption>Brunelleschi, <i>Experiment of the Mirror</i>, 1413</figcaption>
+        </figure>
+
+        <p>Through mathematical one point perspective, new styles of artwork that embraced realism emerged, a departure from the cartoonish medieval and byzantine paintings, drawings, and frescos. <span id="giotto">The work of Giotto, for instance, exemplifies this shift. Although he worked before the discovery of one point perspective, a his frescos show a real difference in style and technical ability. In the images below, Giotto’s work is contrasted with his mentor Cimabue’s.</span> </p>
+
+        <figure>
+          <a href="https://i.pinimg.com/originals/fe/19/18/fe191856e68c27fc17bbd7b6ecab9865.jpg">
+            <img src="https://i.pinimg.com/originals/fe/19/18/fe191856e68c27fc17bbd7b6ecab9865.jpg">
+          </a>
+          <figcaption>(Left) Cimabue, <i>Virgin Enthroned with Angels</i>, c. 1290-95<br>(Right) Giotto, <i>The Ognissanti Madonna</i>, c. 1306-10</figcaption>
+        </figure>
+        <br>
+        <figure>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/3/3a/Giotto_-_Scrovegni_-_-36-_-_Lamentation_%28The_Mourning_of_Christ%29_adj.jpg">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Giotto_-_Scrovegni_-_-36-_-_Lamentation_%28The_Mourning_of_Christ%29_adj.jpg">
+          </a>
+          <figcaption>Giotto, <i>The Lamentation of Christ</i></figcaption>
+        </figure>
+
+        <h3>Patronism </h3>
+
+        <p><span id="patrons">By the mid 1400’s, a new trend began to emerge where artists would include their patrons in their paintings and frescos.</span> <span id="Masaccio">In <i>Holy Trinity</i>, Masaccio includes his patrons alongside his depiction of the Holy Trinity, Mary, and St. John.</span> </p>
+
+        <figure>
+          <a href="https://upload.wikimedia.org/wikipedia/commons/d/d2/Masaccio%2C_trinit%C3%A0.jpg">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Masaccio%2C_trinit%C3%A0.jpg">
+          </a>
+          <figcaption>Masaccio, <i>Holy Trinity</i>, 1427-28</figcaption>
+        </figure>
+
+        <p><span id="conversation">This depiction became known as <i>Sacra conversazione</i> (holy/sacred conversation) and often depicted Mary and Jesus surrounded by saints and patrons.</span> </p>
+        <span id="Francesca">
+          <figure>
+            <a href="https://upload.wikimedia.org/wikipedia/commons/9/9e/Piero_della_Francesca_046.jpg">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Piero_della_Francesca_046.jpg">
+            </a>
+            <figcaption>Piero della Francesca, <i>Madonna and Child with Saints</i>, 1472-74</figcaption>
+          </figure>
+        </span>
+
+        <p>Although this practice satisfied the patrons, who were often wealthy bankers and looking for salvation, it became an issue for many religious hardliners, who felt that such an act was unacceptable. Donor portraits, among many other reasons, would eventually lead to the Reformation, discussed in the next section. </p>
+
+        <h3>Characteristics of Artworks </h3>
+
+        <p><u>1350-1450</u></p>
+        <ul><li>Stiff, unrealistic representations
+        </li><li>Mainly religious imagery
+        </li><li>Lots of gold and solid halos; strongly influenced by Gothic and Byzantine works
+        </li><li>No true one or two point perspective, only approximations
+        </li><li>Mostly paintings, few sculptures, if any 
+        </li><li>Architecture is short and human scale, round columns and arches 
+        </li></ul>
+
+        <p><u>1450-1500</u></p>
+        <ul><li>One point mathematical perspective 
+        </li><li>Many religious images, though other subjects become more common, such as portraits
+        </li><li>More realistic figures 
+        </li><li>Begin to include patrons in the images
+        </li></ul>
+
+        <p><u>1500-1550</u></p>
+        <ul><li>Very realistic figures and landscapes 
+        </li><li>Both religious subjects and non religious subjects; halos are small or gone in religious work
+        </li><li>Both sculpture and painting, as well as prints 
+        </li></ul>
+      </div> <!-- end #renaissance -->
+
+      <!-- Entry on Baroque -->
+      <div class="main-entry" id="baroque">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fermentum iaculis eu non diam phasellus vestibulum lorem sed risus. Id donec ultrices tincidunt arcu. Ullamcorper sit amet risus nullam eget. Et tortor at risus viverra adipiscing at in tellus. Eu feugiat pretium nibh ipsum consequat nisl. Ultrices in iaculis nunc sed. Non diam phasellus vestibulum lorem sed risus ultricies tristique nulla. Fames ac turpis egestas integer eget aliquet nibh. Arcu risus quis varius quam quisque. In vitae turpis massa sed elementum tempus egestas sed sed. Non nisi est sit amet facilisis magna etiam tempor. Mattis pellentesque id nibh tortor. Risus in hendrerit gravida rutrum quisque non. Pellentesque massa placerat duis ultricies lacus. Vel fringilla est ullamcorper eget nulla facilisi etiam dignissim diam. Nisi lacus sed viverra tellus in hac.
+
+        Pharetra magna ac placerat vestibulum lectus mauris. Quisque id diam vel quam elementum pulvinar. Elementum curabitur vitae nunc sed velit dignissim sodales ut eu. Quis varius quam quisque id. Feugiat pretium nibh ipsum consequat nisl vel. Donec pretium vulputate sapien nec sagittis aliquam malesuada. Potenti nullam ac tortor vitae. Ut eu sem integer vitae justo. Fringilla urna porttitor rhoncus dolor purus non enim praesent. In cursus turpis massa tincidunt dui ut. In massa tempor nec feugiat nisl pretium fusce id. Venenatis lectus magna fringilla urna porttitor rhoncus dolor. Est lorem ipsum dolor sit amet consectetur adipiscing elit. Rutrum tellus pellentesque eu tincidunt tortor aliquam nulla. Urna porttitor rhoncus dolor purus non. Eu sem integer vitae justo eget magna fermentum iaculis eu. Erat imperdiet sed euismod nisi porta lorem mollis. Gravida in fermentum et sollicitudin ac. Nulla at volutpat diam ut venenatis. </p>
+      </div> <!-- end #baroque -->
+
+      <!-- Entry on neoclassicism -->
+      <div class="main-entry" id="neoclassicism">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fermentum iaculis eu non diam phasellus vestibulum lorem sed risus. Id donec ultrices tincidunt arcu. Ullamcorper sit amet risus nullam eget. Et tortor at risus viverra adipiscing at in tellus. Eu feugiat pretium nibh ipsum consequat nisl. Ultrices in iaculis nunc sed. Non diam phasellus vestibulum lorem sed risus ultricies tristique nulla. Fames ac turpis egestas integer eget aliquet nibh. Arcu risus quis varius quam quisque. In vitae turpis massa sed elementum tempus egestas sed sed. Non nisi est sit amet facilisis magna etiam tempor. Mattis pellentesque id nibh tortor. Risus in hendrerit gravida rutrum quisque non. Pellentesque massa placerat duis ultricies lacus. Vel fringilla est ullamcorper eget nulla facilisi etiam dignissim diam. Nisi lacus sed viverra tellus in hac.
+
+        Pharetra magna ac placerat vestibulum lectus mauris. Quisque id diam vel quam elementum pulvinar. Elementum curabitur vitae nunc sed velit dignissim sodales ut eu. Quis varius quam quisque id. Feugiat pretium nibh ipsum consequat nisl vel. Donec pretium vulputate sapien nec sagittis aliquam malesuada. Potenti nullam ac tortor vitae. Ut eu sem integer vitae justo. Fringilla urna porttitor rhoncus dolor purus non enim praesent. In cursus turpis massa tincidunt dui ut. In massa tempor nec feugiat nisl pretium fusce id. Venenatis lectus magna fringilla urna porttitor rhoncus dolor. Est lorem ipsum dolor sit amet consectetur adipiscing elit. Rutrum tellus pellentesque eu tincidunt tortor aliquam nulla. Urna porttitor rhoncus dolor purus non. Eu sem integer vitae justo eget magna fermentum iaculis eu. Erat imperdiet sed euismod nisi porta lorem mollis. Gravida in fermentum et sollicitudin ac. Nulla at volutpat diam ut venenatis. </p>
+      </div> <!-- end #neoclassicism -->
+
+
+    </div> <!-- end #content-wrapper -->
+
+    <div id="footer"></div> <!-- end #footer -->
+
+    <script src="js/main.js"></script>
+  </body> 
+  </html>
